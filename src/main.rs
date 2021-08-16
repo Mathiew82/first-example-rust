@@ -168,4 +168,12 @@ fn main() {
     let otra_cadena = cadena.clone();
     println!("La primera cadena es = {}", cadena);
     println!("La segunda cadena es = {}", otra_cadena);
+
+    // Pasando argumentos a funciones con la referencia a la variable del argumento pasado
+    let argumento = String::from("Esta es otra cadena");
+    fn devuelve_length_cadena(cadena_origen: &String) -> usize {
+        let resultado: usize = cadena_origen.len();
+        resultado
+    }
+    println!("Este es el resultado de la función = {}", devuelve_length_cadena(&argumento));
 }
