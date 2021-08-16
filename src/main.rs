@@ -153,4 +153,19 @@ fn main() {
     // Una forma de declarar e instanciar una variable de tipo string
     let cadena = String::from("Esta es una cadena");
     println!("{}", cadena);
+
+    // Variables con valores con tamaño conocido que se almacenan en memoria stack (lo que sería paso por valor)
+    let numero = 2;
+    let otro_numero = numero;
+    println!("El primer número es = {}", numero);
+    println!("El segundo número es = {}", otro_numero);
+
+    // Variables con valores con tamaño no conocido que se almacenan en memoria heap (lo que sería poso por referencia)
+    // En este caso la referencia la perdería la primera variable que lo tuviera.
+    // La segunda variable a la que se le asigna el valor de la primera, tomaría prestada esa referencia.
+    // De esto se deduce que una referencia solo puede tener un propietario.
+    let cadena = String::from("Esta es una cadena");
+    let otra_cadena = cadena.clone();
+    println!("La primera cadena es = {}", cadena);
+    println!("La segunda cadena es = {}", otra_cadena);
 }
