@@ -176,4 +176,12 @@ fn main() {
         resultado
     }
     println!("Este es el resultado de la función = {}", devuelve_length_cadena(&argumento));
+
+    // Ejemplo de cómo mutar la variable pasada como argumento de
+    let mut saludo_sin_nombre = String::from("¡Hola ");
+    fn devuelve_saludo(principio_saludo: &mut String) -> &mut String {
+        principio_saludo.push_str("Alberto!");
+        principio_saludo
+    }
+    println!(">>> {:?}", devuelve_saludo(&mut saludo_sin_nombre));
 }
