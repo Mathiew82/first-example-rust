@@ -184,4 +184,19 @@ fn main() {
         principio_saludo
     }
     println!(">>> {:?}", devuelve_saludo(&mut saludo_sin_nombre));
+
+    let cadena = String::from("Hola aquí estamos de nuevo con el curso de Rust");
+    fn primera_palabra(cadena: &String) -> &str {
+        let bytes = cadena.as_bytes();
+
+        for (i, &item) in bytes.iter().enumerate() {
+            if item == b' ' {
+                return &cadena[0..i];
+            }
+        }
+
+        &cadena[..]
+    }
+    let palabra = primera_palabra(&cadena);
+    println!("La primera palabra es: {}", palabra);
 }
