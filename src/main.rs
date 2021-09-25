@@ -2,13 +2,21 @@
 #[derive(Debug)]
 struct Man {
     name: &'static str,
-    age: i32
+    age: i32,
 }
 
 #[derive(Debug)]
 struct Woman {
     name: &'static str,
-    age: i32
+    age: i32,
+}
+
+#[derive(Debug)]
+struct Usuario {
+    nombre: String,
+    email: String,
+    edad: u8,
+    activo: bool,
 }
 
 // Esto es la forma en la que las estructuras de Man y Women implementan el trait
@@ -46,11 +54,11 @@ trait Person {
 fn main() {
     let man: Man = Man {
         name: "Alberto",
-        age: 39
+        age: 39,
     };
     let woman: Woman = Woman {
         name: "María",
-        age: 46
+        age: 46,
     };
     println!("man = {:?}, woman = {:?}", man, woman);
 
@@ -61,14 +69,17 @@ fn main() {
     // Ejemplo de destructuración de objetos
     let Man { name, age } = Man {
         name: "Pepe",
-        age: 67
+        age: 67,
     };
     println!("El nombre es = {}, y su edad es = {}", name, age);
 
     // Ejemplo de destructuración de objetos renombrando las propiedades del mismo
-    let Woman { name: new_name, age: new_age } = Woman {
+    let Woman {
+        name: new_name,
+        age: new_age,
+    } = Woman {
         name: "Manuela",
-        age: 72
+        age: 72,
     };
     println!("El nombre es = {}, y su edad es = {}", new_name, new_age);
 
@@ -77,7 +88,7 @@ fn main() {
     println!("go_shopping of woman = {}", woman.go_shopping());
 
     // Un ejemplo de un array
-    let arr: [u32;3] = [4, 5, 6];
+    let arr: [u32; 3] = [4, 5, 6];
     println!("El array es = {:?}", arr);
 
     // Un ejemplo de if
@@ -124,14 +135,20 @@ fn main() {
             break count2 + count2;
         }
     };
-    println!("Este es el resultado devuelto por el bucle loop = {}", _result_from_loop);
+    println!(
+        "Este es el resultado devuelto por el bucle loop = {}",
+        _result_from_loop
+    );
 
     // Un ejemplo de bucle while
     let mut count3 = 0;
     while count3 < 3 {
         count3 += 1;
 
-        println!("Esta es una iteracción del bucle while con el valor del count = {}", count3);
+        println!(
+            "Esta es una iteracción del bucle while con el valor del count = {}",
+            count3
+        );
     }
 
     // Un ejemplo de bucle for in
@@ -175,7 +192,10 @@ fn main() {
         let resultado: usize = cadena_origen.len();
         resultado
     }
-    println!("Este es el resultado de la función = {}", devuelve_length_cadena(&argumento));
+    println!(
+        "Este es el resultado de la función = {}",
+        devuelve_length_cadena(&argumento)
+    );
 
     // Ejemplo de cómo mutar la variable pasada como argumento de
     let mut saludo_sin_nombre = String::from("¡Hola ");
@@ -199,4 +219,14 @@ fn main() {
     }
     let palabra = primera_palabra(&cadena);
     println!("La primera palabra es: {}", palabra);
+
+    let mut usuario1 = Usuario {
+        nombre: String::from("Alberto"),
+        email: String::from("alberto@gmail.com"),
+        edad: 39,
+        activo: true,
+    };
+
+    usuario1.nombre = String::from("Albertito");
+    print!("Los datos del usuario son: {:?}", usuario1);
 }
